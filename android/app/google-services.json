@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "726886100486",
+    "project_id": "time-tracker-97e99",
+    "storage_bucket": "time-tracker-97e99.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:726886100486:android:18169e8d4a4f1169169d87",
+        "android_client_info": {
+          "package_name": "com.tung.flutter_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "726886100486-398vga2aturnd2ru9nji5vo0vb7bis0v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBFipjJuBSAL-WhOfDlOCvvUdre2wThpfc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "726886100486-398vga2aturnd2ru9nji5vo0vb7bis0v.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "726886100486-ggf9ku9p4bbruh7ftkqdq4vup1htcieq.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.tung.timeTrackerFlutterCourse"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
