@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_app/app/home/job_entries/job_entries_page.dart';
 import 'package:flutter_app/app/home/jobs/edit_job_page.dart';
 import 'package:flutter_app/app/home/jobs/empty_content.dart';
 import 'package:flutter_app/app/home/jobs/job_list_tile.dart';
@@ -13,25 +14,7 @@ import 'package:provider/provider.dart';
 import '../models/job.dart';
 
 class JobsPage extends StatelessWidget {
-  Future<void> _signOut(BuildContext context) async {
-    try {
-      final auth = Provider.of<AuthBase>(context, listen: false);
-      await auth.signOut();
-    } catch (e) {
-      print(e.toString());
-    }
-  }
 
-  Future<void> _confirmSignOut(BuildContext context) async {
-    final didRequestSignOut = await showAlertDialog(context,
-        title: 'Logout',
-        content: 'Are you sure that you want to logout?',
-        defaultActionText: 'Logout',
-        cancelActionText: 'Cancel');
-    if (didRequestSignOut == true) {
-      _signOut(context);
-    }
-  }
 
   Future<void> _delete(BuildContext context, Job job) async {
     try {
@@ -49,17 +32,14 @@ class JobsPage extends StatelessWidget {
       appBar: AppBar(
         title: Text('Jobs'),
         actions: <Widget>[
-          FlatButton(
-              onPressed: () => _confirmSignOut(context),
-              child: Text(
-                'Logout',
-                style: TextStyle(fontSize: 18.0, color: Colors.white),
-              ))
+          IconButton(
+              icon: Icon(Icons.add),
+              color: Colors.white,
+              onPressed: () => EditJobPage.show(context,
+                  database: Provider.of<Database>(context, listen: false))),
         ],
       ),
       body: _buildContents(context),
-      floatingActionButton: FloatingActionButton(
-          child: Icon(Icons.add), onPressed: () => EditJobPage.show(context)),
     );
   }
 
@@ -79,10 +59,7 @@ class JobsPage extends StatelessWidget {
             onDismissed: (direction) => _delete(context, job),
             child: JobListTile(
               job: job,
-              onTap: () => EditJobPage.show(
-                context,
-                job: job,
-              ),
+              onTap: () => JobEntriesPage.show(context, job),
             ),
           ),
         );
